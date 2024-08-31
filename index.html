@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet" />
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="Script.js"></script>
+  </head>
+  <body>
+    <video autoplay loop muted id="background-video">
+      <source src="ano.mp4" type="video/mp4" />
+    </video>
+    <div class="video-container">
+      <div class="logo">
+        <img src="Logo.png" />
+        <p>chahat</p>
+      </div>
+      <p class="para1">The Website is Under Construction</p>
+      <img src="undraw_under_construction_46pa 1.png" alt="" />
+      <p class="para2">we'll let you know when things are to go</p>
+      <div class="btn">
+        <input type="text" placeholder=" Email" id="inputBox" />
+        <button id="submitBtn">Submit</button>
+      </div>
+      <div class="footer">
+        <div class="left">
+          <p>
+            <a href="https://stalwart-narwhal-f4ab3c.netlify.app/"
+              >© Cody By Chahat Fatma</a
+            >
+          </p>
+        </div>
+        <div class="right">
+          <a
+            href="https://www.google.com/search?q=facebook&oq=face&gs_lcrp=EgZjaHJvbWUqEAgAEAAYgwEY4wIYsQMYgAQyEAgAEAAYgwEY4wIYsQMYgAQyEwgBEC4YgwEYxwEYsQMY0QMYgAQyCQgCEEUYORiABDINCAMQABiDARixAxiABDINCAQQABiDARixAxiABDINCAUQABiDARixAxiABDINCAYQABiDARixAxiABDIKCAcQABixAxiABDIKCAgQABixAxiABDIHCAkQABiPAtIBCTM2MzFqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8"
+            ><i class="ri-facebook-fill"></i
+          ></a>
+          <a
+            href="https://www.google.com/search?gs_ssp=eJzj4tLP1TfIyDMsS05XYDRgdGDwYi8pzywpSS0CAFnOB00&q=twitter&oq=tw&gs_lcrp=EgZjaHJvbWUqGAgBEC4YQxiDARjHARixAxjRAxiABBiKBTIUCAAQRRg5GEMYgwEYsQMYgAQYigUyGAgBEC4YQxiDARjHARixAxjRAxiABBiKBTISCAIQLhhDGMcBGNEDGIAEGIoFMhIIAxAAGEMYgwEYsQMYgAQYigUyDQgEEAAYgwEYsQMYgAQyEwgFEC4YgwEYxwEYsQMY0QMYgAQyDQgGEAAYgwEYsQMYgAQyBwgHEAAYjwIyBwgIEAAYjwLSAQk5NTQ0ajBqMTWoAgCwAgA&sourceid=chrome&ie=UTF-8"
+            ><i class="ri-twitter-fill"></i
+          ></a>
+          <a
+            href="https://www.google.com/search?q=snapchat+web&sca_esv=9eeb101476a64b32&sca_upv=1&sxsrf=ADLYWIIC_pjKfWbrtnhfNVLMihVbIZ6jpA%3A1715780403302&ei=M7tEZp-VEsD4seMP4vC6uAY&oq=snapchap&gs_lp=Egxnd3Mtd2l6LXNlcnAiCHNuYXBjaGFwKgIIATIWEC4YgAQYsQMY0QMYQxiDARjHARiKBTIQEAAYgAQYsQMYQxiDARiKBTIQEAAYgAQYsQMYQxiDARiKBTINEAAYgAQYsQMYQxiKBTIKEAAYgAQYQxiKBTIKEAAYgAQYsQMYCjIKEAAYgAQYsQMYCjIKEAAYgAQYsQMYCjIKEAAYgAQYsQMYCjIKEAAYgAQYsQMYCkiRbFCbA1j5VXACeAGQAQCYAbcCoAHJGqoBBjItMTIuMrgBAcgBAPgBAZgCDqAC5yOoAhTCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICGRAuGIAEGLADGNEDGEMYxwEYyAMYigXYAQHCAhMQLhiABBiwAxhDGMgDGIoF2AEBwgITEC4YgAQY0QMYxwEYJxjJAxiKBcICEBAAGIAEGLEDGIMBGBQYhwLCAgsQABiABBixAxiDAcICCBAAGIAEGLEDwgILEAAYgAQYkgMYigXCAiAQLhiABBjRAxjHARjJAxiKBRiXBRjcBBjeBBjgBNgBAsICEBAuGIAEGNEDGMcBGCcYigXCAgsQLhiABBixAxiDAcICBRAAGIAEwgIdEC4YgAQY0QMYxwEYigUYlwUY3AQY3gQY4ATYAQLCAgoQIxiABBgnGIoFwgIEECMYJ8ICBxAjGCcY6gLCAhYQABgDGLQCGOUCGOoCGIwDGI8B2AEDwgIWEC4YAxi0AhjlAhjqAhiMAxiPAdgBA8ICERAuGIAEGLEDGNEDGIMBGMcBwgIOEC4YgAQYsQMYgwEYigXCAg0QLhiABBixAxhDGIoFwgIlEC4YgAQYsQMY0QMYQxiDARjHARiKBRiXBRjcBBjeBBjgBNgBAsICEBAuGIAEGNEDGEMYxwEYigWYAw6IBgGQBhG6BgYIARABGAi6BgYIAhABGBS6BgYIAxABGAuSBwsyLjAuOS4yLjctMaAH2K8B&sclient=gws-wiz-serp"
+            ><i class="ri-snapchat-fill"></i
+          ></a>
+          <a
+            href="https://www.google.com/search?q=instagram+web&sca_esv=9eeb101476a64b32&sca_upv=1&sxsrf=ADLYWIKLb62scCNmUxr5hGfLl5sW5mOrMA%3A1715780451112&ei=Y7tEZtO0BrfdseMP1cSV8AY&ved=0ahUKEwiT8rOi5I-GAxW3bmwGHVViBW4Q4dUDCBA&uact=5&oq=instagram+web&gs_lp=Egxnd3Mtd2l6LXNlcnAiDWluc3RhZ3JhbSB3ZWIyEBAAGIAEGLEDGIMBGBQYhwIyDhAAGIAEGJECGLEDGIoFMgsQABiABBiRAhiKBTILEAAYgAQYkQIYigUyCBAAGIAEGLEDMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgARI4jZQAFjoMnAAeAGQAQCYAbsCoAHsEqoBBTItOC4xuAEDyAEA-AEBmAIGoAKsDMICBhAAGAcYHsICChAAGIAEGBQYhwKYAwCSBwMyLTagB4Y9&sclient=gws-wiz-serp"
+            ><i class="ri-instagram-fill"></i
+          ></a>
+          <a
+            href="https://www.google.com/search?q=linkedin+learning&sca_esv=9eeb101476a64b32&sca_upv=1&sxsrf=ADLYWIIN3A9WI6LzO_JcjvdHLbOBjp6d-w%3A1715780508191&ei=nLtEZs6jC_jfseMPvOOTqAU&gs_ssp=eJzj4tLP1TcwrSgwKC9TYDRgdGDwEszJzMtOTcnMU8hJTSzKy8xLBwCzGAr1&oq=link&gs_lp=Egxnd3Mtd2l6LXNlcnAiBGxpbmsqAggBMgoQIxiABBgnGIoFMhAQLhiABBjRAxjHARgnGIoFMg0QABiABBixAxhDGIoFMhAQABiABBixAxhDGIMBGIoFMhAQABiABBixAxhDGIMBGIoFMg0QABiABBixAxhDGIoFMg0QABiABBixAxgUGIcCMgoQABiABBhDGIoFMgsQABiABBixAxiDATIKEAAYgAQYQxiKBTIdEC4YgAQY0QMYxwEYigUYlwUY3AQY3gQY4ATYAQFItBdQAFiWBnAAeAGQAQCYAY8CoAHcB6oBAzItNLgBAcgBAPgBAZgCBaACyhXCAgoQLhiABBgnGIoFwgIOEAAYgAQYsQMYgwEYigXCAhcQLhiABBiKBRiXBRjcBBjeBBjgBNgBAcICEBAuGIAEGLEDGEMYgwEYigXCAhEQLhiABBixAxjRAxiDARjHAcICDhAuGIAEGLEDGMcBGK8BmAMAugYGCAEQARgUkgcHMi00LjctMaAHtDM&sclient=gws-wiz-serp"
+            ><i class="ri-linkedin-fill"></i
+          ></a>
+          <a
+            href="https://www.google.com/search?q=github&sca_esv=9eeb101476a64b32&sca_upv=1&sxsrf=ADLYWIJvTuM4B9KAM2vzRyGI7MTdb9hh8w%3A1715780539212&ei=u7tEZpHDDKrjseMPj5ye0Ag&ved=0ahUKEwjRjLXM5I-GAxWqcWwGHQ-OB4oQ4dUDCBA&uact=5&oq=github&gs_lp=Egxnd3Mtd2l6LXNlcnAiBmdpdGh1YjIQEC4YgAQY0QMYxwEYJxiKBTILEAAYgAQYsQMYgwEyCBAAGIAEGLEDMgoQABiABBhDGIoFMggQABiABBixAzIFEAAYgAQyCxAAGIAEGLEDGIMBMg4QABiABBixAxiDARiKBTIIEAAYgAQYsQMyCBAAGIAEGLEDMh0QLhiABBjRAxjHARiKBRiXBRjcBBjeBBjgBNgBAUj1FVAAWP4KcAB4AZABAJgB-wGgAf0JqgEFMC4yLjS4AQPIAQD4AQGYAgagArwKwgIKECMYgAQYJxiKBcICEBAuGIAEGNEDGEMYxwEYigXCAhYQLhiABBixAxjRAxhDGIMBGMcBGIoFwgIQEAAYgAQYsQMYQxiDARiKBcICBRAuGIAEwgIOEC4YgAQYsQMYgwEYigXCAgoQABiABBgUGIcCwgINEAAYgAQYsQMYQxiKBcICCxAuGIAEGLEDGIMBwgILEC4YgAQYxwEYrwHCAhQQLhiABBixAxiDARjHARiKBRivAcICCBAuGIAEGLEDmAMAugYGCAEQARgUkgcDMi02oAepVw&sclient=gws-wiz-serp"
+            ><i class="ri-github-fill"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
